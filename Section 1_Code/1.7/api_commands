@@ -1,5 +1,11 @@
-curl -s 'http://localhost:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u admin:admin
+curl -s 'http://localhost:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u leon:abcdef@123456
 
-curl -s -XPOST 'http://localhost:8080/createItem?name=python-project-new' -u admin:admin --data-binary @config.xml -H "Jenkins-Crumb:384576fea44a8984fd1afe2474c8e951" -H "Content-Type:text/xml"
+curl -s -XPOST 'http://localhost:8080/createItem?name=python-project-new' -u leon:abcdef@123456 --data-binary @config.xml -H "Jenkins-Crumb:fc349c0301975e32d3e9c0390e7b8a5d1b887768fbdf32564603993de4658fc5" -H "Content-Type:text/xml"
 
-curl -s -XPOST 'http://localhost:8080/reload' -u admin:admin -H "Jenkins-Crumb:aacc27914e1ef26b82e8930ec44ce944"
+curl -s -XPOST 'http://localhost:8080/reload' -u leon:abcdef@123456 -H "Jenkins-Crumb:fc349c0301975e32d3e9c0390e7b8a5d1b887768fbdf32564603993de4658fc5"
+
+
+install Strict Crumb Issuer Plugin and uncheck "Check the session ID"
+https://www.jenkins.io/doc/upgrade-guide/2.176/#upgrading-to-jenkins-lts-2-176-3
+https://almdemo.polarion.com/polarion/help/index.jsp?topic=%2Fcom.polarion.xray.doc.user%2Fguide%2Fxid1853303.html
+

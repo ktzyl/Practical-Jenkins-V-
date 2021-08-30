@@ -1,6 +1,8 @@
 #Install EPEL repo
 rpm -ihv https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm
 
+yum -y install epel-release
+
 #Install Graphite and dependencies
 yum -y install graphite-web mysql mariadb-server MySQL-python net-tools mlocate wget python-carbon python-pip gcc python-devel libffi python-cffi cairo cairo-devel fontconfig freetype*
 
@@ -32,6 +34,8 @@ chown -R apache:apache /var/lib/graphite-web /usr/share/graphite/
 
 #Edit file
 vi /etc/httpd/conf.d/graphite-web.conf
+
+
 
 #Add content
 
@@ -72,7 +76,6 @@ vi /etc/httpd/conf.d/graphite-web.conf
 vi /etc/yum.repos.d/grafana.repo
 
 #Add content
-[grafana]
 name=grafana
 baseurl=https://packagecloud.io/grafana/stable/el/6/$basearch
 repo_gpgcheck=1
